@@ -1,33 +1,41 @@
-from setuptools import setup, find_packages
+from setuptools import setup,find_packages
 from typing import List
 
-#Declaring variables for setup function
+#Declaring variables for setup functions
 PROJECT_NAME="housing-predictor"
-VERSION="0.0.5"
+VERSION="0.0.1"
 AUTHOR="Rudra Shankar"
-DESCRIPTION="This is my first end-to-end ML project"
+DESRCIPTION="This is my end to end ML project"
 
 REQUIREMENT_FILE_NAME="requirements.txt"
-SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True
 
-def get_requirements_list()->List[str]:
+HYPHEN_E_DOT = "-e ."
+
+
+def get_requirements_list() -> List[str]:
     """
-    Description: This function is going to return list of requirements mentioned in 
-    requirements.txt file
-
-    return: This function is going to return a list which contains name of libraries mentioned 
-    in requirements.txt file
+    Description: This function is going to return list of requirement
+    mention in requirements.txt file
+    return This function is going to return a list which contain name
+    of libraries mentioned in requirements.txt file
     """
     with open(REQUIREMENT_FILE_NAME) as requirement_file:
-        return requirement_file.readlines().remove("-e .")
+        requirement_list = requirement_file.readlines()
+        requirement_list = [requirement_name.replace("\n", "") for requirement_name in requirement_list]
+        if HYPHEN_E_DOT in requirement_list:
+            requirement_list.remove(HYPHEN_E_DOT)
+        return requirement_list
+
 
 
 setup(
 name=PROJECT_NAME,
 version=VERSION,
 author=AUTHOR,
-description=DESCRIPTION,
-packages=find_packages(),
+description=DESRCIPTION,
+packages=find_packages(), 
 install_requires=get_requirements_list()
 )
+
+
 
