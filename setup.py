@@ -8,9 +8,9 @@ AUTHOR="Rudra Shankar"
 DESRCIPTION="This is my end to end ML project"
 
 REQUIREMENT_FILE_NAME="requirements.txt"
+SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True
 
 HYPHEN_E_DOT = "-e ."
-
 
 def get_requirements_list() -> List[str]:
     """
